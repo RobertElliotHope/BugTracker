@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class DashboardHome extends JPanel implements ActionListener
+public class DashboardHome extends JPanel
 {
 
 	public DashboardHome()
@@ -42,11 +40,5 @@ public class DashboardHome extends JPanel implements ActionListener
 		splitPanel.add(leftPanel, BorderLayout.WEST);
 		splitPanel.add(rightPanel, BorderLayout.CENTER);
 		add(splitPanel);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 }

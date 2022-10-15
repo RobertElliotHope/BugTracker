@@ -28,12 +28,15 @@ public class FlatToggleButton extends JToggleButton
 		// Add selection colours
 		if (getModel().getGroup() != null && getModel().getGroup().isSelected(getModel()))
 		{
+			// Set the text colour to white, change the button colour to show it is selected
+			// and make the button rounded on the left
 			setForeground(Color.WHITE);
 			g2.setColor(Color.decode("#BC2551"));
 			g2.fillRoundRect((int) (getWidth() * 0.05), 0, getWidth(), getHeight(), 8, 8);
 		}
 		else
 		{
+			// Set the text colour to a darker colour to show it is unselected
 			setForeground(Color.decode("#8A5C8F"));
 		}
 
