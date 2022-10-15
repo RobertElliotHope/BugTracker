@@ -3,10 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SideBugsView extends JPanel implements ActionListener
+public class DashboardViewBugs extends JPanel implements ActionListener
 {
-	public SideBugsView()
+	public DashboardViewBugs()
 	{
+		// Configure panel
 		setLayout(new GridBagLayout());
 		setBackground(Color.RED);
 	}

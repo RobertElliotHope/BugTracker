@@ -3,21 +3,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SideHomeView extends JPanel implements ActionListener
+public class DashboardHome extends JPanel implements ActionListener
 {
 
-	private final JPanel splitPanel;
-	private final JPanel leftPanel;
-	private final JPanel rightPanel;
-
-	public SideHomeView()
+	public DashboardHome()
 	{
+		// Configure panel
 		setLayout(new GridLayout());
 		setBackground(Color.GREEN);
 
-		splitPanel = new JPanel();
-		leftPanel = new JPanel();
-		rightPanel = new JPanel();
+		// Create child panels and configure them
+		JPanel splitPanel = new JPanel();
+		JPanel leftPanel = new JPanel();
+		JPanel rightPanel = new JPanel();
 
 		splitPanel.setLayout(new BorderLayout());
 		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));

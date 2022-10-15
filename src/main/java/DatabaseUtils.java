@@ -9,15 +9,17 @@ public final class DatabaseUtils
 
 	public static void init() throws SQLException
 	{
+		// Create users table
 		connect(usersURL, "CREATE TABLE IF NOT EXISTS users(UserID INTEGER PRIMARY KEY, Username varchar(25)," +
 				"Password varchar(25), IsAdmin BIT)");
 
+		// Register default test account credentials
 		registerAccount("Username", "Password", true);
 	}
 
+	// Connect to database and optionally execute chosen statement
 	public static void connect(String databaseURL, String... sql) throws SQLException
 	{
-
 		File file = new File(databaseURL);
 
 		try (Connection conn = DriverManager.getConnection(databaseURL))
@@ -31,12 +33,14 @@ public final class DatabaseUtils
 		}
 	}
 
+	// Register an account
 	public static void registerAccount(String username, String password, boolean isAdmin) throws SQLException
 	{
 		connect(usersURL, "INSERT INTO users (Username,Password,IsAdmin) VALUES ('" + username + "'," +
 				" '" + password + "', " + (isAdmin ? 1 : 0) + ")"); // Connect and convert java boolean input to sql BIT
 	}
 
+	// Check a value against a specified input
 	public static boolean compareValue(String databaseURL, String columnLabel, String input) throws SQLException
 	{
 		try (Connection conn = DriverManager.getConnection(databaseURL))

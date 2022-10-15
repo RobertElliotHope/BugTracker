@@ -14,13 +14,15 @@ public class MainLoginView extends JPanel implements ActionListener
 
 	public MainLoginView()
 	{
+		// Configure panel
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setBackground(Color.decode("#212327"));
+
+		// Create login components
 		JLabel title = new JLabel("Login");
 		usernameField = new JTextField("Username");
 		passwordField = new JPasswordField("Password");
 		JButton loginButton = new JButton("Login");
-
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setBackground(Color.decode("#212327"));
 
 		// Configure the title colour
 		title.setForeground(Color.WHITE);
