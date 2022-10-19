@@ -1,29 +1,37 @@
-package UI;
-
 import javax.swing.*;
-
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class FlatToggleButton extends JToggleButton
+public class SideMenuButton extends JToggleButton
 {
 
-	public FlatToggleButton(String label)
+	private final SideSubMenu sideSubMenu;
+	private final String label;
+
+	public SideMenuButton(SideSubMenu sideSubMenu, String label)
 	{
 		super(label);
+		this.sideSubMenu = sideSubMenu;
+		this.label = label;
 
 		// Disable default graphics
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		setFocusPainted(false);
 		setOpaque(false);
+
+		// Add the 'show content' action to the button
+		addActionListener(showContent());
 	}
 
 	@Override
 	protected void paintComponent(Graphics g)
 	{
+
 		// Enable anti aliasing
 		Graphics2D g2 = (Graphics2D) g.create();
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
 		// Add selection colours
 		if (getModel().getGroup() != null && getModel().getGroup().isSelected(getModel()))
@@ -40,7 +48,27 @@ public class FlatToggleButton extends JToggleButton
 			setForeground(Color.decode("#8A5C8F"));
 		}
 
-		g2.dispose();
 		super.paintComponent(g);
+		g2.dispose();
+	}
+
+	private ActionListener showContent()
+	{
+		return e ->
+		{
+			// Set the tab in the sub menu and dashboard
+			Dashboard dashboard = Main.panel.getReportView().getDashboard();
+
+			sideSubMenu.getCardLayout().show(sideSubMenu.getContentPanel(), getFormattedName());
+			dashboard.getCardLayout().show(dashboard.getContentPanel(), getFormattedName());
+
+			// Repaint custom close button
+			Main.panel.repaint();
+		};
+	}
+
+	public String getFormattedName()
+	{
+		return label.toUpperCase().replace(' ', '_');
 	}
 }

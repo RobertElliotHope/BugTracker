@@ -1,3 +1,5 @@
+package database;
+
 import java.io.File;
 import java.sql.*;
 
@@ -5,6 +7,8 @@ public final class DatabaseUtils
 {
 
 	public static final String usersURL = "jdbc:sqlite:users.db";
+
+	// TODO: Make this a table, and not a separate database
 	public static final String bugsURL = "jdbc:sqlite:bugs.db";
 
 	public static void init() throws SQLException

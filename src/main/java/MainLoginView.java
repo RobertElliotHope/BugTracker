@@ -1,3 +1,5 @@
+import database.DatabaseUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -98,6 +100,10 @@ public class MainLoginView extends JPanel implements ActionListener
 			{
 				throw new RuntimeException(ex);
 			}
+		}
+		else
+		{
+			Main.panel.loginDidFail();
 		}
 	}
 }
