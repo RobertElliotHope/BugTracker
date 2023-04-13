@@ -1,4 +1,7 @@
+package main;
+
 import database.DatabaseUtils;
+import main.Main;
 
 import javax.swing.*;
 import java.awt.*;

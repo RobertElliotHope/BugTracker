@@ -6,25 +6,30 @@ import java.awt.*;
 public abstract class TabView extends JPanel
 {
 
-	private final String name;
+    private final String name;
 
-	public TabView(String name)
-	{
-		this.name = name;
+    public TabView(String name)
+    {
+        this.name = name;
 
-		// Configure panel
-		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		setOpaque(false);
+        GridBagConstraints c = new GridBagConstraints();
 
-		// Create dummy information
-		add(new JButton(name.toUpperCase().replace(' ', '_')));
+        // Configure panel
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-	}
+        //setOpaque(true);
+        c.weighty = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        setBackground(Color.magenta);
 
-	@Override
-	public String getName()
-	{
-		return name;
-	}
+        // Create dummy information
+        //add(new JButton(name.toUpperCase().replace(' ', '_')));
+
+    }
+
+    @Override
+    public String getName()
+    {
+        return name;
+    }
 }
